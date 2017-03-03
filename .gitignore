@@ -5,12 +5,6 @@ bower_components/
 
 # Distributed files
 target/
-www/
-
-# Cordova files
-platforms/
-plugins/
-projects/
 
 # OS generated files
 .DS_Store
