@@ -32,7 +32,7 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       {
         test: /\.css$/,
         use: [
-          'raw-loader',
+          'to-string-loader',
           'css-loader?importLoaders=1',
           postCssLoader
         ],
@@ -40,7 +40,7 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       },
       {
         test: /\.scss$/,
-        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
+        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
         include: [path.join(dirname, 'src')]
       },
       {

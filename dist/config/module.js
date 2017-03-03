@@ -31,11 +31,11 @@ module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
       include: [path.join(dirname, 'node_modules')]
     }, {
       test: /\.css$/,
-      use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader],
+      use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader],
       include: [path.join(dirname, 'src')]
     }, {
       test: /\.scss$/,
-      use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
+      use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
       include: [path.join(dirname, 'src')]
     }, {
       test: /\.(eot|woff|ttf)$/,
