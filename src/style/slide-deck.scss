@@ -1,8 +1,9 @@
 @import 'mixins';
 @import 'settings';
 
-body {
-  background-image: url('./images/pattern.png');
+@mixin bodyBackground() {
+  background-image: inline('./images/pattern.png');
+  background-repeat: repeat;
 }
 
 @import 'theme';

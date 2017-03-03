@@ -4,9 +4,9 @@ module.exports = {
   plugins: [
     require('autoprefixer'),
     require('cssnano'),
-    require('postcss-base64')({
+    require('postcss-assets')({
       extensions: ['.png'],
-      root: path.join(__dirname, 'src/style')
+      basePath: path.join(__dirname, 'src/style')
     })
   ]
 };
