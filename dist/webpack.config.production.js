@@ -1,11 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 var webpack = require('webpack');
 
-exports.default = {
+module.exports = {
   plugins(base) {
     return base.concat([new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -16,4 +13,3 @@ exports.default = {
     })]);
   }
 };
-module.exports = exports['default'];

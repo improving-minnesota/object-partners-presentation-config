@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export default function baseConfig(options = {}) {
+module.exports = function baseConfig(options = {}) {
   const configDir = path.join(__dirname, 'config');
   const config = {
     entry: require(path.join(configDir, 'entry')),

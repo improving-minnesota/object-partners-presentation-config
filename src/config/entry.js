@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   polyfills: './src/polyfills',
   vendor: './src/vendor',
   app: ['./src/index']

@@ -1,8 +1,8 @@
-import path from 'path';
-import assign from 'deep-assign';
+const path = require('path');
+const assign = require('deep-assign');
 
-import assignArray from './assign-array';
-import assignObject from './assign-object';
+const assignArray = require('./assign-array');
+const assignObject = require('./assign-object');
 
 function reduceConfig(baseConfig, extendConfig) {
   return Object.keys(extendConfig)

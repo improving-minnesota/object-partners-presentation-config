@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export default function module({ dirname }) {
+module.exports = function module({ dirname }) {
   return {
     rules: [
       {

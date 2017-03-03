@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export default function resolve({ dirname }) {
+module.exports = function resolve({ dirname }) {
   return {
     alias: {
       public: path.join(dirname, 'src/public')

@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-export default {
+module.exports = {
   plugins(base) {
     return base
       .concat([

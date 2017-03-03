@@ -1,17 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
+var path = require('path');
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _module(_ref) {
+module.exports = function module(_ref) {
   var dirname = _ref.dirname;
 
   return {
@@ -24,11 +15,11 @@ function _module(_ref) {
     }, {
       test: /\.css$/,
       use: ['style-loader', 'css-loader'],
-      include: [_path2.default.join(dirname, 'node_modules')]
+      include: [path.join(dirname, 'node_modules')]
     }, {
       test: /\.css$/,
       use: ['to-string-loader', 'css-loader'],
-      include: [_path2.default.join(dirname, 'src')]
+      include: [path.join(dirname, 'src')]
     }, {
       test: /\.(eot|woff|ttf)$/,
       use: ['file-loader']
@@ -43,6 +34,4 @@ function _module(_ref) {
       use: ['url-loader']
     }]
   };
-}exports.default = _module;
-;
-_module.exports = exports['default'];
+};

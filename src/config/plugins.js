@@ -1,7 +1,7 @@
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-export default function plugins({ dirname }) {
+module.exports = function plugins({ dirname }) {
   return [
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,

@@ -1,6 +1,6 @@
-import assign from 'deep-assign';
+const assign = require('deep-assign');
 
-export default function assignObject(base, ...extendObjects) {
+module.exports = function assignObject(base, ...extendObjects) {
   if ( extendObjects.length > 1 && extendObjects[extendObjects.length - 1] === true ) {
     return assign({}, ...extendObjects);
   }

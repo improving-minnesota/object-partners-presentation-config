@@ -1,6 +1,6 @@
-import flatten from 'lodash.flatten';
+const flatten = require('lodash.flatten');
 
-export default function assignArray(base, ...additional) {
+module.exports = function assignArray(base, ...additional) {
   if ( additional.length > 0 && additional[additional.length - 1] === true ) {
     return []
       .concat(flatten(additional.slice(0, -1)));

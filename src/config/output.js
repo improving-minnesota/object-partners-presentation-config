@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-export default function output({ dirname }) {
+module.exports = function output({ dirname }) {
   return {
     filename: '[name].js',
     path: path.join(dirname, 'dist'),
