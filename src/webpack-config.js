@@ -29,7 +29,7 @@ function getConfig(environment) {
 
 export default function getWebpackConfig(extendConfig = {}) {
   return function webpackConfig(env = {}) {
-    const base = assignObject({}, require('./webpack.config.base'));
+    const base = require('./webpack.config.base');
 
     const extended = Object.keys(env)
       .reduce((newBaseConfig, key) => {

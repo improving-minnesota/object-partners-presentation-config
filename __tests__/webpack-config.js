@@ -1,5 +1,5 @@
 import baseConfig from '../src/webpack.config.base';
-import getWebpackConfig from '../src/';
+import getWebpackConfig from '../src/webpack-config';
 
 describe('central API', () => {
   const config = getWebpackConfig();
@@ -65,9 +65,11 @@ describe('extension', () => {
   });
 
   test('it extends with additional environment configs', () => {
+    const len = baseConfig.plugins.length;
     const envConfig = getWebpackConfig()({ production: true });
 
-    expect(baseConfig.plugins.length).not.toBe(envConfig.plugins.length);
+
+    expect(len).not.toBe(envConfig.plugins.length);
   });
 
 });
