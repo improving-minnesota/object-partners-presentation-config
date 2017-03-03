@@ -41,7 +41,7 @@ module.exports = function getWebpackConfig() {
   return function webpackConfig() {
     var env = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    var base = require('./webpack.config.base')(options);
+    var base = require('./webpack.config.base')(options, env);
 
     var extended = Object.keys(env).reduce(function (newBaseConfig, key) {
       return reduceConfig(newBaseConfig, getConfig(key));

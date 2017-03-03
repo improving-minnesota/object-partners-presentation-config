@@ -3,7 +3,9 @@
 var path = require('path');
 
 module.exports = function baseConfig() {
-  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
 
   var configDir = path.join(__dirname, 'config');
   var config = {
@@ -15,7 +17,7 @@ module.exports = function baseConfig() {
   };
   return Object.keys(config).reduce(function (extendedConfig, key) {
     if (typeof config[key] === 'function') {
-      extendedConfig[key] = config[key](options);
+      extendedConfig[key] = config[key].apply(config, args);
     }
     return extendedConfig;
   }, config);

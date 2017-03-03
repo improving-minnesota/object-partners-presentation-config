@@ -1,13 +1,19 @@
 'use strict';
 
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = function module(_ref) {
+module.exports = function module(_ref, _ref2) {
   var dirname = _ref.dirname;
+  var production = _ref2.production;
 
+  var extractStyle = new ExtractTextPlugin({
+    filename: '[name].[contenthash].css',
+    disable: !production
+  });
   var postCssLoader = {
     loader: 'postcss-loader',
-    options: require(path.join(__dirname, '../config-files/postcss-config'))
+    options: require(path.join(__dirname, '../config-files/postcss.config'))
   };
   return {
     rules: [{
@@ -23,15 +29,22 @@ module.exports = function module(_ref) {
       use: ['html-loader']
     }, {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader'],
+      loader: extractStyle.extract({
+        use: ['css-loader'],
+        fallback: 'style-loader'
+      }),
       include: [path.join(dirname, 'node_modules')]
     }, {
       test: /\.css$/,
-      use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader],
+      loader: extractStyle.extract({
+        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader]
+      }),
       include: [path.join(dirname, 'src')]
     }, {
-      test: /\.s(c|a)ss$/,
-      use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
+      test: /\.scss$/,
+      loader: extractStyle.extract({
+        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader']
+      }),
       include: [path.join(dirname, 'src')]
     }, {
       test: /\.(eot|woff|ttf)$/,
@@ -43,8 +56,13 @@ module.exports = function module(_ref) {
       test: /\.pug|jade$/,
       use: ['html-loader', 'pug-html-loader']
     }, {
-      test: /\.(jpe?g|png|gif|svg)$/,
-      use: ['url-loader']
+      test: /\.(jpe?g|png|gif|svg|mp4)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      }]
     }]
   };
 };
