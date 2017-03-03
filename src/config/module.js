@@ -1,6 +1,11 @@
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = function module({ dirname }) {
+module.exports = function module({ dirname }, { production }) {
+  const extractStyle = new ExtractTextPlugin({
+    filename: '[name].[contenthash].css',
+    disable: !production
+  });
   const postCssLoader = {
     loader: 'postcss-loader',
     options: require(path.join(__dirname, '../config-files/postcss-config'))
@@ -23,17 +28,30 @@ module.exports = function module({ dirname }) {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        loader: extractStyle.extract({
+          use: [
+            'css-loader'
+          ],
+          fallback: 'style-loader'
+        }),
         include: [path.join(dirname, 'node_modules')]
       },
       {
         test: /\.css$/,
-        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader],
+        loader: extractStyle.extract({
+          use: [
+            'raw-loader',
+            'css-loader?importLoaders=1',
+            postCssLoader
+          ]
+        }),
         include: [path.join(dirname, 'src')]
       },
       {
-        test: /\.s(c|a)ss$/,
-        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
+        test: /\.scss$/,
+        loader: extractStyle.extract({
+          use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader']
+        }),
         include: [path.join(dirname, 'src')]
       },
       {
@@ -49,8 +67,15 @@ module.exports = function module({ dirname }) {
         use: ['html-loader', 'pug-html-loader']
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/,
-        use: ['url-loader']
+        test: /\.(jpe?g|png|gif|svg|mp4)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
       }
     ]
   };

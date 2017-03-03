@@ -35,7 +35,7 @@ function getConfig(environment) {
 module.exports = function getWebpackConfig(extendConfig = {}, options = {}) {
   options.dirname = options.dirname || __dirname;
   return function webpackConfig(env = {}) {
-    const base = require('./webpack.config.base')(options);
+    const base = require('./webpack.config.base')(options, env);
 
     const extended = Object.keys(env)
       .reduce((newBaseConfig, key) => {

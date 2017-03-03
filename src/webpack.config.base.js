@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = function baseConfig(options = {}) {
+module.exports = function baseConfig(...args) {
   const configDir = path.join(__dirname, 'config');
   const config = {
     entry: require(path.join(configDir, 'entry')),
@@ -12,7 +12,7 @@ module.exports = function baseConfig(options = {}) {
   return Object.keys(config)
     .reduce((extendedConfig, key) => {
       if ( typeof config[key] === 'function' ) {
-        extendedConfig[key] = config[key](options);
+        extendedConfig[key] = config[key](...args);
       }
       return extendedConfig;
     }, config);
