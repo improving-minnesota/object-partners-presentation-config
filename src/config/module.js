@@ -8,7 +8,7 @@ module.exports = function module({ dirname }, { production }) {
   });
   const postCssLoader = {
     loader: 'postcss-loader',
-    options: require(path.join(__dirname, '../config-files/postcss-config'))
+    options: require(path.join(__dirname, '../config-files/postcss.config'))
   };
   return {
     rules: [
