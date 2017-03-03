@@ -1,5 +1,5 @@
 {
-  "name": "webpack-config",
+  "name": "object-partners-presentation",
   "version": "1.0.0",
   "main": "./dist/webpack-config.js",
   "repository": {},
@@ -15,7 +15,7 @@
     "prestyle": "npm run sass",
     "style": "postcss dist/style/slide-deck.css --output dist/style/slide-deck.css",
     "transpile": "babel src --out-dir dist",
-    "test": "jest --no-watchman",
+    "test": "jest",
     "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
