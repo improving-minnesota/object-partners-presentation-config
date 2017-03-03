@@ -26,6 +26,8 @@ This will export a webpack config containing all the necessary loaders (e.g. `cs
 
 ### Reveal.js style
 
+![slide deck](./assets/slide-deck.jpg)
+
 (Presumes webpack)
 
 ```javascript
