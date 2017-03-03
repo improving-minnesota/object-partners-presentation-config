@@ -1,11 +1,6 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function module({ dirname }, { production }) {
-  const extractStyle = new ExtractTextPlugin({
-    filename: '[name].[contenthash].css',
-    disable: !production
-  });
   const postCssLoader = {
     loader: 'postcss-loader',
     options: require(path.join(__dirname, '../config-files/postcss.config'))
@@ -28,30 +23,21 @@ module.exports = function module({ dirname }, { production }) {
       },
       {
         test: /\.css$/,
-        loader: extractStyle.extract({
-          use: [
-            'css-loader'
-          ],
-          fallback: 'style-loader'
-        }),
+        use: ['style-loader', 'css-loader']
         include: [path.join(dirname, 'node_modules')]
       },
       {
         test: /\.css$/,
-        loader: extractStyle.extract({
-          use: [
-            'raw-loader',
-            'css-loader?importLoaders=1',
-            postCssLoader
-          ]
-        }),
+        use: [
+          'raw-loader',
+          'css-loader?importLoaders=1',
+          postCssLoader
+        ],
         include: [path.join(dirname, 'src')]
       },
       {
         test: /\.scss$/,
-        loader: extractStyle.extract({
-          use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader']
-        }),
+        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
         include: [path.join(dirname, 'src')]
       },
       {

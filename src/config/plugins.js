@@ -1,9 +1,8 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
-module.exports = function plugins({ dirname }, { production }) {
+module.exports = function plugins({ dirname }) {
   return [
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
@@ -11,10 +10,6 @@ module.exports = function plugins({ dirname }, { production }) {
     ),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor', 'polyfills']
-    }),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css',
-      disable: !production
     }),
     new HtmlWebpackPlugin({
       template: path.join(dirname, 'src/public/index.pug'),
