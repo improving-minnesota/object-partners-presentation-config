@@ -28,12 +28,12 @@ module.exports = function module({ dirname }) {
       },
       {
         test: /\.css$/,
-        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader],
+        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader],
         include: [path.join(dirname, 'src')]
       },
       {
         test: /\.s(c|a)ss$/,
-        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
+        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
         include: [path.join(dirname, 'src')]
       },
       {
