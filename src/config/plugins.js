@@ -11,7 +11,7 @@ module.exports = function plugins({ dirname }) {
       name: ['vendor', 'polyfills']
     }),
     new HtmlWebpackPlugin({
-      template: './src/public/index.pug',
+      template: path.join(dirname, 'src/public/index.pug'),
       chunksSortMode: 'dependency'
     })
   ];
