@@ -34,6 +34,6 @@ module.exports = function plugins(_ref, env, ExtractTextPlugin) {
     template: path.join(dirname, 'src/public/index.pug'),
     chunksSortMode: 'dependency'
   }), new webpack.DefinePlugin({
-    'process.env.NODE_ENV': getEnvironment(env)
+    'process.env.NODE_ENV': JSON.stringify(getEnvironment(env))
   })];
 };

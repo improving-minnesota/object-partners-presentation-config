@@ -36,7 +36,7 @@ module.exports = function plugins({ dirname }, env, ExtractTextPlugin) {
       chunksSortMode: 'dependency'
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': getEnvironment(env)
+      'process.env.NODE_ENV': JSON.stringify(getEnvironment(env))
     })
   ];
 }
