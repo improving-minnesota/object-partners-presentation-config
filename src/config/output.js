@@ -1,7 +1,9 @@
 import path from 'path';
 
-export default {
-  filename: '[name].js',
-  path: path.join(__dirname, 'dist'),
-  publicPath: './'
-};
+export default function output({ dirname }) {
+  return {
+    filename: '[name].js',
+    path: path.join(dirname, 'dist'),
+    publicPath: './'
+  };
+}

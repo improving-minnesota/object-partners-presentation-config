@@ -1,7 +1,7 @@
 {
   "name": "webpack-config",
   "version": "1.0.0",
-  "main": "dist/webpack-config.js",
+  "main": "./dist/webpack-config.js",
   "repository": {},
   "license": "MIT",
   "files": [

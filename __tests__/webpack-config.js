@@ -65,9 +65,8 @@ describe('extension', () => {
   });
 
   test('it extends with additional environment configs', () => {
-    const len = baseConfig.plugins.length;
+    const len = baseConfig({ dirname: __dirname }).plugins.length;
     const envConfig = getWebpackConfig()({ production: true });
-
 
     expect(len).not.toBe(envConfig.plugins.length);
   });

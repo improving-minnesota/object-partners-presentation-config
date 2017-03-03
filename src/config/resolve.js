@@ -1,8 +1,10 @@
 import path from 'path';
 
-export default {
-  alias: {
-    public: path.join(__dirname, 'src/public')
-  },
-  extensions: ['.', '.ts', '.js', '.json']
-};
+export default function resolve({ dirname }) {
+  return {
+    alias: {
+      public: path.join(dirname, 'src/public')
+    },
+    extensions: ['.', '.ts', '.js', '.json']
+  };
+}
