@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`central API it matches expected config 1`] = `
+Object {
+  "app": Array [
+    "./src/index",
+  ],
+  "polyfills": "./src/polyfills",
+  "vendor": "./src/vendor",
+}
+`;
