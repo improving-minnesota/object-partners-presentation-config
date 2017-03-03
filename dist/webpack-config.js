@@ -47,11 +47,13 @@ function getConfig(environment) {
 
 function getWebpackConfig() {
   var extendConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+  options.dirname = options.dirname || __dirname;
   return function webpackConfig() {
     var env = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    var base = (0, _assignObject2.default)({}, require('./webpack.config.base'));
+    var base = require('./webpack.config.base')(options);
 
     var extended = Object.keys(env).reduce(function (newBaseConfig, key) {
       return reduceConfig(newBaseConfig, getConfig(key));
