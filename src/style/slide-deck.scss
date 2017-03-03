@@ -2,7 +2,7 @@
 @import 'settings';
 
 @mixin bodyBackground() {
-  background-image: inline('./images/pattern.png');
+  background: inline('./images/pattern.png'), linear-gradient(to left, rgba(white, 1) 35%, rgba(white, 0));
   background-repeat: repeat;
 }
 
