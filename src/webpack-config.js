@@ -27,7 +27,10 @@ function getConfig(environment) {
   }
 }
 
-export default function getWebpackConfig(extendConfig = {}, options = {}) {
+/*
+ * webpack throws error if unknown properties, so need to use CJS module
+ */
+module.exports = function getWebpackConfig(extendConfig = {}, options = {}) {
   options.dirname = options.dirname || __dirname;
   return function webpackConfig(env = {}) {
     const base = require('./webpack.config.base')(options);

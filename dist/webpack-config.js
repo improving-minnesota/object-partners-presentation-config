@@ -1,10 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = getWebpackConfig;
-
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
@@ -45,7 +40,10 @@ function getConfig(environment) {
   }
 }
 
-function getWebpackConfig() {
+/*
+ * webpack throws error if unknown properties, so need to use CJS module
+ */
+module.exports = function getWebpackConfig() {
   var extendConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -62,4 +60,3 @@ function getWebpackConfig() {
     return reduceConfig(extended, extendConfig);
   };
 };
-module.exports = exports['default'];
