@@ -1,7 +1,8 @@
 @import 'mixins';
 @import 'settings';
 
-$opi-red: #C82506;;
+$opi-red: #C82506;
+$opi-logo-stacked: inline('./images/OPi-logo-stacked.png');
 
 $backgroundColor: white;
 $headingColor: $opi-red;
@@ -26,11 +27,13 @@ $selectionBackgroundColor: mix(black, $opi-red, 25%);
   &:after {
     content: '';
     position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 83px;
-    width: 255px;
-    background-image: inline('./images/OPi-logo-stacked.png');
+    top: 5px;
+    left: 5px;
+    height: 55px;
+    width: 170px;
+    background-image: $opi-logo-stacked;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
 
