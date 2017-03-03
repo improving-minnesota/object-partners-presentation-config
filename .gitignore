@@ -4,7 +4,6 @@ bower_components/
 .vscode/
 
 # Distributed files
-dist/
 target/
 www/
 
