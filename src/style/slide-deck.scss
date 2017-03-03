@@ -1,0 +1,8 @@
+@import 'mixins';
+@import 'settings';
+
+body {
+  background-image: url('./images/pattern.png');
+}
+
+@import 'theme';

@@ -1,7 +1,12 @@
+const path = require('path');
+
 module.exports = {
   plugins: [
     require('autoprefixer'),
-    require('postcss-simple-vars'),
-    require('cssnano')
+    require('cssnano'),
+    require('postcss-base64')({
+      extensions: ['.png'],
+      root: path.join(__dirname, 'src/style')
+    })
   ]
 };

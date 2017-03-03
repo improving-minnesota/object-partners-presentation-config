@@ -10,7 +10,10 @@
   "scripts": {
     "prebuild": "del-cli \"dist/**/*\"",
     "build": "npm run transpile & npm run style",
-    "style": "postcss src/style/slide-deck.css --output dist/style/slide-deck.css",
+    "presass": "mkdirp dist/style",
+    "sass": "node-sass src/style/slide-deck.scss > dist/style/slide-deck.css --include-path ./node_modules/reveal.js/css/theme/template",
+    "prestyle": "npm run sass",
+    "style": "postcss dist/style/slide-deck.css --output dist/style/slide-deck.css",
     "transpile": "babel src --out-dir dist",
     "test": "jest --no-watchman",
     "test:watch": "npm run test -- --watch"
@@ -24,8 +27,11 @@
     "cssnano": "~3.10.0",
     "del-cli": "~0.2.1",
     "jest": "~19.0.2",
+    "mkdirp": "~0.5.1",
+    "node-sass": "~4.5.0",
+    "postcss-base64": "~0.6.1",
     "postcss-cli": "~3.0.0-beta",
-    "postcss-simple-vars": "~3.0.0"
+    "reveal.js": "~3.4.1"
   },
   "dependencies": {
     "angular2-template-loader": "~0.6.2",
