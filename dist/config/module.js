@@ -1,7 +1,7 @@
 'use strict';
 
 var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function module(_ref, _ref2) {
   var dirname = _ref.dirname;
