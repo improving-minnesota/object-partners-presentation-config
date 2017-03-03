@@ -1,11 +1,21 @@
 const path = require('path');
 
 module.exports = function module({ dirname }) {
+  const postCssLoader = {
+    loader: 'postcss-loader',
+    options: require(path.join(__dirname, '../config-files/postcss-config'))
+  };
   return {
     rules: [
       {
         test: /\.ts$/,
-        use: ['awesome-typescript-loader', 'angular2-template-loader']
+        use: [
+        {
+          loader: 'awesome-typescript-loader',
+          options: {
+            configFileName: path.join(__dirname, '../tsconfig.json')
+          }
+        }, 'angular2-template-loader']
       },
       {
         test: /\.html$/,
@@ -18,7 +28,12 @@ module.exports = function module({ dirname }) {
       },
       {
         test: /\.css$/,
-        use: ['to-string-loader', 'css-loader'],
+        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader],
+        include: [path.join(dirname, 'src')]
+      },
+      {
+        test: /\.s(c|a)ss$/,
+        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
         include: [path.join(dirname, 'src')]
       },
       {
