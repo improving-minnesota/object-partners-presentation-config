@@ -10,7 +10,7 @@ module.exports = function baseConfig() {
   }
 
   var configDir = path.join(__dirname, 'config');
-  var ExtractText = path.join(configDir, 'extract-text-plugin').apply(undefined, args);
+  var ExtractText = require(path.join(configDir, 'extract-text-plugin')).apply(undefined, args);
   var config = {
     entry: require(path.join(configDir, 'entry')),
     output: require(path.join(configDir, 'output')),
