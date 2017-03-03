@@ -17,6 +17,7 @@ var getEnvironment = function getEnvironment() {
   };
 
   for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
     if (map[key]) {
       return map[key];
     }

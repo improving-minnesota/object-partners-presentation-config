@@ -13,6 +13,7 @@ const getEnvironment = (env = {}) => {
   };
 
   for ( let i = 0; i < keys.length; i++ ) {
+    const key = keys[i];
     if ( map[key] ) {
       return map[key];
     }
