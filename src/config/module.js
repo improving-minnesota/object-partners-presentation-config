@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = function module({ dirname }, { production }) {
+module.exports = function module({ dirname }, { production }, ExtractTextPlugin) {
   const postCssLoader = {
     loader: 'postcss-loader',
     options: require(path.join(__dirname, '../config-files/postcss.config'))
@@ -23,7 +23,10 @@ module.exports = function module({ dirname }, { production }) {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        loader: ExtractTextPlugin.extract({
+          use: ['css-loader'],
+          fallback: 'style-loader'
+        }),
         include: [path.join(dirname, 'node_modules')]
       },
       {

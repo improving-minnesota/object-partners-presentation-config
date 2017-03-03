@@ -1,16 +1,11 @@
 'use strict';
 
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = function module(_ref, _ref2) {
+module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
   var dirname = _ref.dirname;
   var production = _ref2.production;
 
-  var extractStyle = new ExtractTextPlugin({
-    filename: '[name].[contenthash].css',
-    disable: !production
-  });
   var postCssLoader = {
     loader: 'postcss-loader',
     options: require(path.join(__dirname, '../config-files/postcss.config'))
@@ -29,22 +24,18 @@ module.exports = function module(_ref, _ref2) {
       use: ['html-loader']
     }, {
       test: /\.css$/,
-      loader: extractStyle.extract({
+      loader: ExtractTextPlugin.extract({
         use: ['css-loader'],
         fallback: 'style-loader'
       }),
       include: [path.join(dirname, 'node_modules')]
     }, {
       test: /\.css$/,
-      loader: extractStyle.extract({
-        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader]
-      }),
+      use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader],
       include: [path.join(dirname, 'src')]
     }, {
       test: /\.scss$/,
-      loader: extractStyle.extract({
-        use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader']
-      }),
+      use: ['raw-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
       include: [path.join(dirname, 'src')]
     }, {
       test: /\.(eot|woff|ttf)$/,

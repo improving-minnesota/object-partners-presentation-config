@@ -1,5 +1,7 @@
 'use strict';
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var path = require('path');
 
 module.exports = function baseConfig() {
@@ -8,6 +10,7 @@ module.exports = function baseConfig() {
   }
 
   var configDir = path.join(__dirname, 'config');
+  var ExtractText = path.join(configDir, 'extract-text-plugin').apply(undefined, args);
   var config = {
     entry: require(path.join(configDir, 'entry')),
     output: require(path.join(configDir, 'output')),
@@ -17,7 +20,7 @@ module.exports = function baseConfig() {
   };
   return Object.keys(config).reduce(function (extendedConfig, key) {
     if (typeof config[key] === 'function') {
-      extendedConfig[key] = config[key].apply(config, args);
+      extendedConfig[key] = config[key].apply(config, _toConsumableArray(args.concat(ExtractText)));
     }
     return extendedConfig;
   }, config);
