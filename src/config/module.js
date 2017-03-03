@@ -18,7 +18,7 @@ module.exports = function module({ dirname }, { production }) {
         {
           loader: 'awesome-typescript-loader',
           options: {
-            configFileName: path.join(__dirname, '../tsconfig.json')
+            configFileName: path.join(__dirname, '../config-files/tsconfig.json')
           }
         }, 'angular2-template-loader']
       },
