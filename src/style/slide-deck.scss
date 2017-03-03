@@ -1,7 +1,11 @@
 @import 'mixins';
 @import 'settings';
 
+$opi-red: #C82506;;
+
 $backgroundColor: white;
+$headingColor: $opi-red;
+$selectionBackgroundColor: mix(black, $opi-red, 25%);
 
 @mixin bodyBackground() {
   background: #FFF;
