@@ -12,8 +12,10 @@ function reduceConfig(baseConfig, extendConfig) {
         newBaseConfig[key] = value(baseConfig[key] || {}, baseConfig);
       } else if ( value.constructor === Array ) {
         newBaseConfig[key] = assignArray(baseConfig[key], value);
-      } else {
+      } else if ( Object.keys(value || {}).length > 0 ) {
         newBaseConfig[key] = assignObject(baseConfig[key], value);
+      } else {
+        newBaseConfig[key] = value;
       }
       return newBaseConfig;
     }, baseConfig);
