@@ -24,8 +24,8 @@ const getEnvironment = (env = {}) => {
 module.exports = function plugins({ dirname }, env, ExtractTextPlugin) {
   return [
     new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      dirname
+      /angular(\\|\/)core(\\|\/)@angular/,
+      path.resolve(dirname, 'src')
     ),
     ExtractTextPlugin,
     new webpack.optimize.CommonsChunkPlugin({
