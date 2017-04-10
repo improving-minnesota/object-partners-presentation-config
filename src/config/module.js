@@ -49,7 +49,15 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       },
       {
         test: /\.md|markdown$/,
-        use: ['html-loader', 'markdown-loader']
+        use: ['html-loader', {
+          loader: 'markdown-loader',
+          options: {
+            highlight(code) {
+              return require('highlight.js').highlightAuto(code).value;
+            },
+            sanitize: false
+          }
+        }]
       },
       {
         test: /\.pug|jade$/,

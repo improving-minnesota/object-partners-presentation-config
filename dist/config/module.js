@@ -42,7 +42,15 @@ module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
       use: ['file-loader']
     }, {
       test: /\.md|markdown$/,
-      use: ['html-loader', 'markdown-loader']
+      use: ['html-loader', {
+        loader: 'markdown-loader',
+        options: {
+          highlight(code) {
+            return require('highlight.js').highlightAuto(code).value;
+          },
+          sanitize: false
+        }
+      }]
     }, {
       test: /\.pug|jade$/,
       use: ['html-loader', 'pug-html-loader']
