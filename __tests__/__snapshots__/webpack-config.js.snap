@@ -3,9 +3,8 @@
 exports[`central API it matches expected config 1`] = `
 Object {
   "app": Array [
-    "./src/index",
+    "./src/main",
   ],
   "polyfills": "./src/polyfills",
-  "vendor": "./src/vendor",
 }
 `;
