@@ -41,7 +41,8 @@ module.exports = function getWebpackConfig(extendConfig = {}, options = {}) {
       .reduce((newBaseConfig, key) => {
         return reduceConfig(newBaseConfig, getConfig(key));
       }, base);
+    const customConfig = typeof extendConfig === 'function' ? extendConfig(env, extended) : extendConfig;
 
-    return reduceConfig(extended, extendConfig);
+    return reduceConfig(extended, customConfig);
   };
 };
