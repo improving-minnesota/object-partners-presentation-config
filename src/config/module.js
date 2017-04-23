@@ -18,6 +18,12 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
         }, 'angular2-template-loader']
       },
       {
+        test: /reveal\.js\/plugin\/.*\.js$/,
+        use: [
+          'file-loader'
+        ]
+      },
+      {
         test: /\.html$/,
         use: ['html-loader']
       },

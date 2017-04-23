@@ -46,7 +46,8 @@ module.exports = function getWebpackConfig() {
     var extended = Object.keys(env).reduce(function (newBaseConfig, key) {
       return reduceConfig(newBaseConfig, getConfig(key));
     }, base);
+    var customConfig = typeof extendConfig === 'function' ? extendConfig(env, extended) : extendConfig;
 
-    return reduceConfig(extended, extendConfig);
+    return reduceConfig(extended, customConfig);
   };
 };
