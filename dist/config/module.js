@@ -29,6 +29,7 @@ module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
       }]
     }, {
       test: /\.html$/,
+      include: [path.join(dirname, 'src')],
       use: ['html-loader']
     }, {
       test: /\.css$/,
