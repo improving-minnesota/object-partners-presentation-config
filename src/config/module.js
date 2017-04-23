@@ -30,6 +30,7 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       },
       {
         test: /\.html$/,
+        include: [path.join(dirname, 'src')],
         use: ['html-loader']
       },
       {
