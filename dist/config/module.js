@@ -20,8 +20,13 @@ module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
         }
       }, 'angular2-template-loader']
     }, {
-      test: /reveal\.js\/plugin\/.*\.js$/,
-      use: ['file-loader']
+      test: /reveal\.js\/plugin\/.*\.(js|html)$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      }]
     }, {
       test: /\.html$/,
       use: ['html-loader']
