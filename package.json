@@ -8,6 +8,7 @@
     "dist"
   ],
   "scripts": {
+    "precommit": "npm run build && git add dist --all",
     "prebuild": "del-cli \"dist/**/*\"",
     "build": "babel src --out-dir dist --copy-files",
     "test": "jest",
@@ -19,6 +20,7 @@
     "babel-plugin-add-module-exports": "~0.2.1",
     "babel-preset-env": "~1.1.11",
     "del-cli": "~0.2.1",
+    "husky": "~0.13.3",
     "jest": "~19.0.2",
     "mkdirp": "~0.5.1"
   },
