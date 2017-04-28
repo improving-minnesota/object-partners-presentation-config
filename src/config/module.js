@@ -18,6 +18,17 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
         }, 'angular2-template-loader']
       },
       {
+        test: /\.tsx/,
+        use: [
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              configFileName: path.join(__dirname, '../config-files/tsconfig.json')
+            }
+          }
+        ]
+      },
+      {
         test: /reveal\.js\/plugin\/.*\.(js|html)$/,
         use: [
           {
@@ -26,7 +37,8 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
               name: '[path][name].[ext]'
             }
           }
-        ]
+        ],
+        include: [path.join(dirname, 'node_modules')]
       },
       {
         test: /\.html$/,
