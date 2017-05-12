@@ -20,13 +20,22 @@ module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
         }
       }, 'angular2-template-loader']
     }, {
+      test: /\.tsx/,
+      use: [{
+        loader: 'awesome-typescript-loader',
+        options: {
+          configFileName: path.join(__dirname, '../config-files/tsconfig.json')
+        }
+      }]
+    }, {
       test: /reveal\.js\/plugin\/.*\.(js|html)$/,
       use: [{
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]'
         }
-      }]
+      }],
+      include: [path.join(dirname, 'node_modules')]
     }, {
       test: /\.html$/,
       include: [path.join(dirname, 'src')],

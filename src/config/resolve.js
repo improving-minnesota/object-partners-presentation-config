@@ -5,6 +5,6 @@ module.exports = function resolve({ dirname }) {
     alias: {
       public: path.join(dirname, 'src/public')
     },
-    extensions: ['.', '.ts', '.js', '.json']
+    extensions: ['.', '.ts', '.tsx', '.js', '.json']
   };
 }
