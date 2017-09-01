@@ -12,9 +12,9 @@ const getEnvironment = (env = {}) => {
     prod: 'production'
   };
 
-  for ( let i = 0; i < keys.length; i++ ) {
+  for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
-    if ( map[key] ) {
+    if (map[key]) {
       return map[key];
     }
   }
@@ -39,4 +39,4 @@ module.exports = function plugins({ dirname }, env, ExtractTextPlugin) {
       'process.env.NODE_ENV': JSON.stringify(getEnvironment(env))
     })
   ];
-}
+};

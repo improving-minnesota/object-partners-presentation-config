@@ -37,7 +37,7 @@ module.exports = function getWebpackConfig() {
   var extendConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-  options.dirname = options.dirname || __dirname;
+  options.dirname = options.dirname || process.cwd();
   return function webpackConfig() {
     var env = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 

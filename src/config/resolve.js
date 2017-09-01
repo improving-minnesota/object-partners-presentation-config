@@ -7,4 +7,4 @@ module.exports = function resolve({ dirname }) {
     },
     extensions: ['.', '.ts', '.tsx', '.js', '.json']
   };
-}
+};
