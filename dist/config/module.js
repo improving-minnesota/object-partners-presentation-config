@@ -75,7 +75,7 @@ module.exports = function module(_ref, _ref2, ExtractTextPlugin) {
     }, {
       test: /\.(jpe?g|png|gif|svg|mp4)$/,
       use: [{
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
           limit: 10000
         }

@@ -1,6 +1,10 @@
 const path = require('path');
 
-module.exports = function module({ dirname }, { production }, ExtractTextPlugin) {
+module.exports = function module(
+  { dirname },
+  { production },
+  ExtractTextPlugin
+) {
   const postCssLoader = {
     loader: 'postcss-loader',
     options: require(path.join(__dirname, '../config-files/postcss.config'))
@@ -10,12 +14,17 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       {
         test: /\.ts$/,
         use: [
-        {
-          loader: 'awesome-typescript-loader',
-          options: {
-            configFileName: path.join(__dirname, '../config-files/tsconfig.json')
-          }
-        }, 'angular2-template-loader']
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              configFileName: path.join(
+                __dirname,
+                '../config-files/tsconfig.json'
+              )
+            }
+          },
+          'angular2-template-loader'
+        ]
       },
       {
         test: /\.tsx/,
@@ -23,7 +32,10 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
           {
             loader: 'awesome-typescript-loader',
             options: {
-              configFileName: path.join(__dirname, '../config-files/tsconfig.json')
+              configFileName: path.join(
+                __dirname,
+                '../config-files/tsconfig.json'
+              )
             }
           }
         ]
@@ -55,16 +67,17 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       },
       {
         test: /\.css$/,
-        use: [
-          'to-string-loader',
-          'css-loader?importLoaders=1',
-          postCssLoader
-        ],
+        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader],
         include: [path.join(dirname, 'src')]
       },
       {
         test: /\.scss$/,
-        use: ['to-string-loader', 'css-loader?importLoaders=1', postCssLoader, 'sass-loader'],
+        use: [
+          'to-string-loader',
+          'css-loader?importLoaders=1',
+          postCssLoader,
+          'sass-loader'
+        ],
         include: [path.join(dirname, 'src')]
       },
       {
@@ -73,15 +86,18 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
       },
       {
         test: /\.md|markdown$/,
-        use: ['html-loader', {
-          loader: 'markdown-loader',
-          options: {
-            highlight(code) {
-              return require('highlight.js').highlightAuto(code).value;
-            },
-            sanitize: false
+        use: [
+          'html-loader',
+          {
+            loader: 'markdown-loader',
+            options: {
+              highlight(code) {
+                return require('highlight.js').highlightAuto(code).value;
+              },
+              sanitize: false
+            }
           }
-        }]
+        ]
       },
       {
         test: /\.pug|jade$/,
@@ -91,7 +107,7 @@ module.exports = function module({ dirname }, { production }, ExtractTextPlugin)
         test: /\.(jpe?g|png|gif|svg|mp4)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
               limit: 10000
             }

@@ -5,7 +5,5 @@ module.exports = {
   output: {
     publicPath: '/'
   },
-  plugins: [
-    new webpack.NamedModulesPlugin()
-  ]
+  plugins: [new webpack.NamedModulesPlugin()]
 };

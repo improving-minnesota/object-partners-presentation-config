@@ -6,4 +6,4 @@ module.exports = function output({ dirname }) {
     path: path.join(dirname, 'dist'),
     publicPath: './'
   };
-}
+};
