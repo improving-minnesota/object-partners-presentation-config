@@ -17,3 +17,6 @@ Thumbs.db
 
 # NPM files
 npm-debug.log
+
+# built files
+dist
